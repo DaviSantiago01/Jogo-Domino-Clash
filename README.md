@@ -1,4 +1,4 @@
-# Domino Clash
+# Dominó Clash
 
 Jogo de dominó desenvolvido em C com interface gráfica e inteligência artificial.
 
