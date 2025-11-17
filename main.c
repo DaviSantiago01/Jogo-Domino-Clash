@@ -395,9 +395,9 @@ char *construirPromptIA(Mao *maoIA, Tabuleiro *tab)
     strcat(pecas, "]");
 
     if (!tab->inicio)
-        snprintf(prompt, 2048, "DOMINO - Mesa vazia\nSuas pecas: %s\n\nEscolha qualquer peca.\nResposta: [numero1|numero2]\nExemplo: [6|4]", pecas);
+        snprintf(prompt, 2048, "DOMINÓ - Mesa vazia\nSuas pecas: %s\n\nEscolha qualquer peca.\nResposta: [numero1|numero2]\nExemplo: [6|4]", pecas);
     else
-        snprintf(prompt, 2048, "DOMINO\nSuas pecas: %s\nMesa: esquerda=%d direita=%d\n\nVOCE PRECISA:\n1. Escolher UMA peca sua que tenha o numero %d OU %d\n2. Decidir o lado: E (esquerda) ou D (direita)\n\nCOMO JOGAR:\n- Para jogar na ESQUERDA: sua peca PRECISA ter o numero %d\n- Para jogar na DIREITA: sua peca PRECISA ter o numero %d\n\nEXEMPLO PRATICO:\nSe voce tem [%d|2] e quer jogar na esquerda: [%d|2] E\nSe voce tem [1|%d] e quer jogar na direita: [1|%d] D\n\nResposta (formato obrigatorio): [numero1|numero2] LADO", pecas, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoInicio, tab->pontoFim, tab->pontoFim);
+        snprintf(prompt, 2048, "DOMINÓ\nSuas pecas: %s\nMesa: esquerda=%d direita=%d\n\nVOCE PRECISA:\n1. Escolher UMA peca sua que tenha o numero %d OU %d\n2. Decidir o lado: E (esquerda) ou D (direita)\n\nCOMO JOGAR:\n- Para jogar na ESQUERDA: sua peca PRECISA ter o numero %d\n- Para jogar na DIREITA: sua peca PRECISA ter o numero %d\n\nEXEMPLO PRATICO:\nSe voce tem [%d|2] e quer jogar na esquerda: [%d|2] E\nSe voce tem [1|%d] e quer jogar na direita: [1|%d] D\n\nResposta (formato obrigatorio): [numero1|numero2] LADO", pecas, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoFim, tab->pontoInicio, tab->pontoInicio, tab->pontoFim, tab->pontoFim);
 
     return prompt;
 }
@@ -423,7 +423,7 @@ char *chamarGroqAPI(const char *prompt)
 
     cJSON *system_msg = cJSON_CreateObject();
     cJSON_AddItemToObject(system_msg, "role", cJSON_CreateString("system"));
-    cJSON_AddItemToObject(system_msg, "content", cJSON_CreateString("Voce e um jogador expert de domino. Analise as pecas disponiveis e escolha a melhor jogada possivel. Responda APENAS no formato [numero1|numero2] LADO. Nao explique, nao justifique, apenas responda."));
+    cJSON_AddItemToObject(system_msg, "content", cJSON_CreateString("Voce e um jogador expert de dominó. Analise as pecas disponiveis e escolha a melhor jogada possivel. Responda APENAS no formato [numero1|numero2] LADO. Nao explique, nao justifique, apenas responda."));
     cJSON_AddItemToArray(messages, system_msg);
 
     cJSON *user_msg = cJSON_CreateObject();
@@ -655,7 +655,7 @@ void desenharMensagem()
 // Interface gráfica criada com funções de desenho da Raylib
 void desenharMenu()
 {
-    DrawText("DOMINO CLASH", SCREEN_WIDTH / 2 - 200, 80, 60, GOLD);
+    DrawText("DOMINÓ CLASH", SCREEN_WIDTH / 2 - 200, 80, 60, GOLD);
     DrawText("Humano vs IA Estrategica", SCREEN_WIDTH / 2 - 150, 160, 25, WHITE);
 
     DrawRectangle(SCREEN_WIDTH / 2 - 150, 240, 300, 60, BLUE);
@@ -676,7 +676,7 @@ void desenharMenu()
 // Exibe as regras do jogo de forma visual e organizada
 void desenharRegras()
 {
-    DrawText("REGRAS DO DOMINO", SCREEN_WIDTH / 2 - 200, 50, 40, GOLD);
+    DrawText("REGRAS DO DOMINÓ", SCREEN_WIDTH / 2 - 200, 50, 40, GOLD);
 
     DrawText("OBJETIVO:", 50, 120, 25, WHITE);
     DrawText("Ser o primeiro a ficar sem pecas", 50, 150, 20, LIGHTGRAY);
